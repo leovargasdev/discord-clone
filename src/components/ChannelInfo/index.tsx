@@ -6,12 +6,9 @@ import { Container, Separator } from './styles';
 const ChannelInfo: React.FC = () => (
   <Container>
     <FaHashtag />
-
     <h3>chat-geral</h3>
-
     <Separator />
-
-    <span>Canal aberto para conversas</span>
+    <span>Bem-vindo ao canal mais bala das galáxias</span>
   </Container>
 );
 

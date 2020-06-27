@@ -1,9 +1,9 @@
 import React from 'react';
+import { MdExpandMore } from 'react-icons/md';
 
-import { Grind } from './styles';
+import { Grind, ServerName } from './styles';
 
 import ServerList from '../ServerList';
-import ServerName from '../ServerName';
 import ChannelInfo from '../ChannelInfo';
 import ChannelList from '../ChannelList';
 import UserInfo from '../UserInfo';
@@ -14,6 +14,10 @@ const Layout: React.FC = () => (
   <Grind>
     <ServerList />
     <ServerName />
+    <ServerName>
+      <h3>Leo Servidor</h3>
+      <MdExpandMore />
+    </ServerName>
     <ChannelInfo />
     <ChannelList />
     <UserInfo />
