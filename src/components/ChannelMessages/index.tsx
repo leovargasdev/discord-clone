@@ -1,13 +1,15 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useCallback } from 'react';
 import { MdAddCircle } from 'react-icons/md';
+import { FormHandles } from '@unform/core';
+import { Form } from '@unform/web';
 
+import InputMessage from './Input';
 import {
   Container,
   Messages,
   Message,
   ContentMessage,
   HeaderMessage,
-  InputWrapper,
 } from './styles';
 
 interface IMessage {
@@ -21,7 +23,12 @@ interface IMessage {
   hasMention?: boolean;
 }
 
+interface IFormMessageData {
+  text: string;
+}
+
 const ChannelMessages: React.FC = () => {
+  const formRef = useRef<FormHandles>(null);
   const messagesRef = useRef() as React.MutableRefObject<HTMLDivElement>;
   const [messages, setMessages] = useState<IMessage[]>([]);
 
@@ -76,6 +83,10 @@ const ChannelMessages: React.FC = () => {
     ]);
   }, []);
 
+  const handleSubmit = useCallback(async (data: IFormMessageData) => {
+    console.log(data);
+  }, []);
+
   return (
     <Container>
       <Messages ref={messagesRef}>
@@ -112,10 +123,14 @@ const ChannelMessages: React.FC = () => {
             </Message>
           ))}
       </Messages>
-      <InputWrapper>
-        <MdAddCircle />
-        <input name="message-chat" placeholder="Digite sua mensagem aqui" />
-      </InputWrapper>
+      <Form ref={formRef} onSubmit={handleSubmit}>
+        <InputMessage
+          name="message-chat"
+          icon={MdAddCircle}
+          type="text"
+          placeholder="Deixe sua mensagem aqui"
+        />
+      </Form>
     </Container>
   );
 };
