@@ -17,14 +17,14 @@ export const Messages = styled.div`
   max-height: calc(100vh - (46px + 68px));
   overflow-y: scroll;
 
-  ::-webkit-scrollbar{
+  ::-webkit-scrollbar {
     width: 4px;
   }
-  ::-webkit-scrollbar-thumb{
+  ::-webkit-scrollbar-thumb {
     background: var(--tertiary);
     border-radius: 4px;
   }
-  ::-webkit-scrollbar-track{
+  ::-webkit-scrollbar-track {
     background: var(--secondary);
   }
 
@@ -44,12 +44,11 @@ export const InputWrapper = styled.div`
     height: 44px;
     font-size: 14px;
     background: transparent;
-    color: #FFF;
+    color: #fff;
 
     &::placeholder {
       color: var(--gray);
     }
-
   }
   svg {
     margin: 0 14px;
@@ -57,13 +56,11 @@ export const InputWrapper = styled.div`
     width: 25px;
     color: var(--gray);
 
-    &:hover{
-      color: #FFF;
+    &:hover {
+      color: #fff;
       cursor: pointer;
     }
   }
 `;
 
-export const Input = styled.input`
-`;
-
+export const Input = styled.input``;

@@ -10,11 +10,14 @@ interface IMessage {
   // isBot ?: boolean;
 }
 
-const Message: React.FC<IMessage> = ({hasMention, children}) => {
+const Message: React.FC<IMessage> = ({ hasMention, children }) => {
   const isBot = false;
   return (
     <Container hasMention={!!hasMention}>
-      <img alt="Fulano" src="https://avatars3.githubusercontent.com/u/11177716?s=460&u=c9e54ca2ea76850493ae4b9c34e029ec2e613199&v=4" />
+      <img
+        alt="Fulano"
+        src="https://avatars3.githubusercontent.com/u/11177716?s=460&u=c9e54ca2ea76850493ae4b9c34e029ec2e613199&v=4"
+      />
       <Content>
         <Header>
           <strong>Fulano</strong>
@@ -25,6 +28,6 @@ const Message: React.FC<IMessage> = ({hasMention, children}) => {
       </Content>
     </Container>
   );
-}
+};
 
 export default Message;

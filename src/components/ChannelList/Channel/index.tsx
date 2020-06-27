@@ -5,10 +5,10 @@ import { Container, ChannelSettings } from './styles';
 
 interface IChannel {
   name: string;
-  selected?: boolean
+  selected?: boolean;
 }
 
-const Channel: React.FC<IChannel> = ({name, selected}) => {
+const Channel: React.FC<IChannel> = ({ name, selected }) => {
   return (
     <Container className={selected ? 'active' : ''}>
       <div>
@@ -22,6 +22,6 @@ const Channel: React.FC<IChannel> = ({name, selected}) => {
       </ChannelSettings>
     </Container>
   );
-}
+};
 
 export default Channel;

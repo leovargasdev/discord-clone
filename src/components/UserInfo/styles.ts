@@ -8,7 +8,7 @@ export const Container = styled.div`
   justify-content: space-between;
   padding: 10px;
   background: var(--quaternary);
-  box-shadow: rgba(0,0,0,0.2) 0 1px 0 0;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 1px 0 0;
 `;
 
 export const Profile = styled.div`
@@ -32,7 +32,7 @@ export const UserData = styled.div`
   strong {
     display: block;
     font-size: 13px;
-    color: #FFF;
+    color: #fff;
   }
 
   span {
@@ -48,9 +48,9 @@ export const Icons = styled.div`
   svg {
     width: 20px;
     height: 20px;
-    color: #FFF;
+    color: #fff;
     opacity: 0.7;
-    transition: opacity .2s;
+    transition: opacity 0.2s;
 
     & + svg {
       margin-left: 8px;

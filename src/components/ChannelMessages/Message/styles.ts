@@ -37,10 +37,10 @@ export const Content = styled.div`
   flex-direction: column;
   justify-content: space-between;
   padding-left: 5px;
-  p{
+  p {
     text-align: left;
     font-size: 16px;
-    color: #FFF;
+    color: #fff;
 
     span {
       color: var(--link);
@@ -57,7 +57,7 @@ export const Header = styled.div`
   align-items: center;
 
   strong {
-    color: #FFF;
+    color: #fff;
     font-size: 16px;
   }
 
@@ -67,7 +67,7 @@ export const Header = styled.div`
     border-radius: 4px;
     padding: 4px 5px;
 
-    color: #FFF;
+    color: #fff;
     font-size: 11px;
     text-transform: uppercase;
     font-weight: bold;

@@ -7,7 +7,7 @@ export const Container = styled.div`
 
   padding: 0 11px 0 16px;
   background: var(--secondary);
-  box-shadow: rgba(0,0,0,0.2) 0 1px 0 0;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 1px 0 0;
   z-index: 2;
 
   h3 {
@@ -23,6 +23,6 @@ export const Container = styled.div`
 
     &:hover {
       cursor: pointer;
-    } 
+    }
   }
 `;

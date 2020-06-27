@@ -8,7 +8,7 @@ export const Container = styled.div`
   padding: 5px 3px;
   border-radius: 5px;
   background: transparent;
-  transition: background .2s;
+  transition: background 0.2s;
 
   div {
     display: flex;
@@ -21,7 +21,7 @@ export const Container = styled.div`
       font-size: 15px;
       color: var(--senary);
       margin-left: 5px;
-    } 
+    }
   }
 
   &:hover {
@@ -30,14 +30,15 @@ export const Container = styled.div`
 
     div {
       span {
-        color: #FFF;
+        color: #fff;
       }
-      & + div { /*mostra os icones de add usuário e ajustes do canal*/
+      & + div {
+        /*mostra os icones de add usuário e ajustes do canal*/
         visibility: visible;
       }
     }
   }
-  
+
   svg {
     width: 24px;
     height: 24px;
@@ -50,14 +51,14 @@ export const ChannelSettings = styled.div`
     width: 16px;
     height: 16px;
     color: var(--symbol);
-    
-    transition: color .2s;
+
+    transition: color 0.2s;
 
     &:hover {
       cursor: pointer;
-      color: #FFF;
+      color: #fff;
     }
-  
+
     & + svg {
       margin-left: 5px;
     }
