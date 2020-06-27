@@ -22,26 +22,34 @@ export const Container = styled.div<IContainerProps>`
   & + div {
     margin-top: 13px;
   }
-`;
 
-export const Avatar = styled.img`
-  width: 40px;
-  height: 40px;
-
-  background: var(--secondary);
-  border-radius: 50%;
-
-  &.bot {
-    background: var(--mention-detail);
+  img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
   }
 `;
 
-export const Message = styled.div`
+export const Content = styled.div`
   min-height: 40px;
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding-left: 5px;
+  p{
+    text-align: left;
+    font-size: 16px;
+    color: #FFF;
+
+    span {
+      color: var(--link);
+      &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    }
+  }
 `;
 
 export const Header = styled.div`
@@ -69,19 +77,5 @@ export const Header = styled.div`
     margin-left: 6px;
     color: var(--gray);
     font-size: 13px;
-  }
-`;
-
-export const Content = styled.div`
-  text-align: left;
-  font-size: 16px;
-  color: #FFF;
-
-  span {
-    color: var(--link);
-    &:hover {
-      cursor: pointer;
-      text-decoration: underline;
-    }
   }
 `;

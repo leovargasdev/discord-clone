@@ -1,34 +1,26 @@
 import React from 'react';
 
-import ServerButton from '../ServerButton';
-
-import { Container, Separator } from './styles';
+import { Container, Separator, Server } from './styles';
+import Logo from '../../assets/wolf-logo.jpg';
 
 const ServerList: React.FC = () => {
   return (
     <Container>
-      <ServerButton isHome/>
+      <Server isHome>
+        <img src={Logo} alt="Logo Fake Server Discord"/>
+      </Server>
 
       <Separator />
-
-      <ServerButton />
-      <ServerButton />
-      <ServerButton hasNotifications/>
-      <ServerButton />
-      <ServerButton />
-      <ServerButton mentions={10}/>
-      <ServerButton />
-      <ServerButton />
-      <ServerButton />
-      <ServerButton />
-      <ServerButton />
-      <ServerButton />
-      <ServerButton />
-      <ServerButton />
-      <ServerButton />
-      <ServerButton />
-      <ServerButton />
-      <ServerButton />
+      
+      <Server />
+      <Server />
+      <Server className="active" />
+      <Server />
+      <Server />
+      <Server hasNotifications />
+      <Server />
+      <Server />
+      <Server mentions={10} />
 
     </Container>
   );

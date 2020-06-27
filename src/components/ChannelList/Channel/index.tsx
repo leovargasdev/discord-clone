@@ -3,17 +3,17 @@ import { FaHashtag, FaUserPlus, FaCog } from 'react-icons/fa';
 
 import { Container, ChannelSettings } from './styles';
 
-interface Props {
-  channelName: string;
+interface IChannel {
+  name: string;
   selected?: boolean
 }
 
-const ChannelButton: React.FC<Props> = ({channelName, selected}) => {
+const Channel: React.FC<IChannel> = ({name, selected}) => {
   return (
     <Container className={selected ? 'active' : ''}>
       <div>
         <FaHashtag />
-        <span>{channelName}</span>
+        <span>{name}</span>
       </div>
 
       <ChannelSettings>
@@ -24,4 +24,4 @@ const ChannelButton: React.FC<Props> = ({channelName, selected}) => {
   );
 }
 
-export default ChannelButton;
+export default Channel;

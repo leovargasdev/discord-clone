@@ -4,7 +4,7 @@ import styled from 'styled-components';
 // SN -> Server Name
 // CI -> Channel Info
 // CL -> Channel List
-// CD -> Channel Data
+// CM -> Channel Messages
 // UL -> User List
 // UI -> User Info
 
@@ -16,8 +16,8 @@ export const Grind = styled.div`
 
   grid-template-areas: 
   'SL SN CI CI'
-  'SL CL CD UL'
-  'SL UI CD UL';
+  'SL CL CM UL'
+  'SL UI CM UL';
 
   height: 100vh;
 `;

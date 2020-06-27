@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  grid-area: CD;
+  grid-area: CM;
 
   display: flex;
   flex-direction: column;

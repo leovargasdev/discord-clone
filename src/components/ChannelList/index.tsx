@@ -1,7 +1,7 @@
 import React from 'react';
 import {MdAdd} from 'react-icons/md';
 
-import ChannelButton from '../ChannelButton';
+import Channel from './Channel';
 import { Container, Category } from './styles';
 
 const ChannelList: React.FC = () => {
@@ -12,10 +12,10 @@ const ChannelList: React.FC = () => {
         <MdAdd />
       </Category>
 
-      <ChannelButton channelName="chat-geral" selected/>
-      <ChannelButton channelName="chat-vip" selected/>
-      <ChannelButton channelName="chat-joje" selected/>
-      <ChannelButton channelName="chat-perdi" selected/>
+      <Channel name="chat-geral"/>
+      <Channel name="chat-vip" selected/>
+      <Channel name="chat-joje"/>
+      <Channel name="chat-perdi"/>
     </Container>
   );
 }
