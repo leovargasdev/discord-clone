@@ -27,6 +27,8 @@ export const Messages = styled.div`
   ::-webkit-scrollbar-track{
     background: var(--secondary);
   }
+
+  scrollbar-color: var(--secondary);
 `;
 
 export const InputWrapper = styled.div`

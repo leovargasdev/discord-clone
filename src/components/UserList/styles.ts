@@ -58,7 +58,7 @@ export const User = styled.div`
     text-overflow: ellipsis;
     overflow: hidden;
   }
-
+  /* tag do bot */
   span {
     margin-left: 9px;
     background: var(--discord);

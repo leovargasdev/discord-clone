@@ -13,9 +13,10 @@ export const Container = styled.div`
   max-height: 100vh;
   overflow-y: scroll;
 
-  ::-webkit-scrollbar{
-    display: none
+  ::-webkit-scrollbar {
+    display: none;
   }
+  scrollbar-width: none;
 `;
 export const Separator = styled.div`
   width: 32px;
