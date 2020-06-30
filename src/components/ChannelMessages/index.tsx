@@ -1,9 +1,5 @@
-import React, { useRef, useEffect, useState, useCallback } from 'react';
-import { MdAddCircle } from 'react-icons/md';
-import { FormHandles } from '@unform/core';
-import { Form } from '@unform/web';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 
-import InputMessage from './Input';
 import {
   Container,
   Messages,
@@ -12,80 +8,52 @@ import {
   HeaderMessage,
 } from './styles';
 
+import NewMessage from './NewMessage';
+import api from '../../services/api';
+
 interface IMessage {
   id: number;
-  user: {
-    name: string;
-    url_avatar: string;
-  };
+  content: string;
   date: string;
-  text: string;
+  username: string;
+  avatar_url: string;
   hasMention?: boolean;
 }
 
-interface IFormMessageData {
-  text: string;
+interface ICreateMessageData {
+  content: string;
+  username: string;
+  avatar_url: string;
 }
 
 const ChannelMessages: React.FC = () => {
-  const formRef = useRef<FormHandles>(null);
   const messagesRef = useRef() as React.MutableRefObject<HTMLDivElement>;
   const [messages, setMessages] = useState<IMessage[]>([]);
-
+  // Carrega as messegens do final
   useEffect(() => {
     const div = messagesRef.current;
     if (div) div.scrollTop = div.scrollHeight;
-  }, [messagesRef]);
+  }, [messagesRef, messages]);
 
   useEffect(() => {
-    // api.get('messages')
-    setMessages([
-      {
-        id: 0,
-        user: {
-          name: 'Marisa',
-          url_avatar: 'https://api.adorable.io/avatars/',
-        },
-        date: new Date(2020, 5, 20).toDateString(),
-        text: 'jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle',
-      },
-      {
-        id: 1,
-        user: {
-          name: 'Giovanna',
-          url_avatar: 'https://api.adorable.io/avatars/',
-        },
-        date: new Date(2020, 5, 20).toDateString(),
-        text:
-          'A prática cotidiana prova que a expansão dos mercados mundiais garante a contribuição de um grupo importante na determinação dos relacionamentos verticais entre as hierarquias.',
-      },
-      {
-        id: 2,
-        user: {
-          name: 'Miguel',
-          url_avatar: 'https://api.adorable.io/avatars/',
-        },
-        date: new Date(2020, 6, 10).toDateString(),
-        hasMention: true,
-        text:
-          'Gostaria de enfatizar que a contínua expansão de nossa atividade aponta para a melhoria do processo de comunicação como um todo.',
-      },
-      {
-        id: 3,
-        user: {
-          name: 'Lara_Cardoso',
-          url_avatar: 'https://api.adorable.io/avatars/',
-        },
-        date: new Date(2020, 6, 16).toDateString(),
-        text:
-          'Pensando mais a longo prazo, a execução dos pontos do programa acarreta um processo de reformulação e modernização do investimento em reciclagem técnica.',
-      },
-    ]);
+    async function loadMessages(): Promise<void> {
+      const response = await api.get('/messages');
+      setMessages(response.data);
+    }
+    loadMessages();
   }, []);
 
-  const handleSubmit = useCallback(async (data: IFormMessageData) => {
-    console.log(data);
-  }, []);
+  const handleAddMessage = useCallback(
+    async (newMessage: ICreateMessageData): Promise<void> => {
+      try {
+        const response = await api.post('/new-message', newMessage);
+        setMessages([...messages, response.data]);
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    [messages],
+  );
 
   return (
     <Container>
@@ -110,27 +78,20 @@ const ChannelMessages: React.FC = () => {
           messages.map(message => (
             <Message key={message.id} hasMention={!!message.hasMention}>
               <img
-                alt={message.user.name}
-                src={`${message.user.url_avatar}${message.id}`}
+                alt={message.username}
+                src={`${message.avatar_url}${message.id}`}
               />
               <ContentMessage>
                 <HeaderMessage>
-                  <strong>{message.user.name}</strong>
+                  <strong>{message.username}</strong>
                   <span>{message.date}</span>
                 </HeaderMessage>
-                <p>{message.text}</p>
+                <p>{message.content}</p>
               </ContentMessage>
             </Message>
           ))}
       </Messages>
-      <Form ref={formRef} onSubmit={handleSubmit}>
-        <InputMessage
-          name="message-chat"
-          icon={MdAddCircle}
-          type="text"
-          placeholder="Deixe sua mensagem aqui"
-        />
-      </Form>
+      <NewMessage handleAddMessage={handleAddMessage} />
     </Container>
   );
 };
