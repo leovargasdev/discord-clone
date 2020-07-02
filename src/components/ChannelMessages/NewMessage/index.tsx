@@ -11,17 +11,23 @@ interface ICreateMessageData {
 
 interface INewMessageProps {
   handleAddMessage: (message: ICreateMessageData) => void;
+  user: IUser;
 }
 
-const NewMessage: React.FC<INewMessageProps> = ({ handleAddMessage }) => {
+interface IUser {
+  name: string;
+  avatar: string;
+}
+
+const NewMessage: React.FC<INewMessageProps> = ({ handleAddMessage, user }) => {
   const [newMessage, setNewMessage] = useState('');
   const handleSubmit = useCallback(
     (event: FormEvent<HTMLFormElement>): void => {
       event.preventDefault();
       const message = {
         content: newMessage,
-        username: 'Abacaxi',
-        avatar_url: 'https://api.adorable.io/avatars/',
+        username: user.name,
+        avatar_url: user.avatar,
       };
       handleAddMessage(message);
       setNewMessage('');

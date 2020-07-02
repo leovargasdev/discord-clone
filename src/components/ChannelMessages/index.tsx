@@ -26,9 +26,19 @@ interface ICreateMessageData {
   avatar_url: string;
 }
 
+interface IUser {
+  name: string;
+  avatar: string;
+}
+
 const ChannelMessages: React.FC = () => {
   const messagesRef = useRef() as React.MutableRefObject<HTMLDivElement>;
   const [messages, setMessages] = useState<IMessage[]>([]);
+  const [user, setUser] = useState<IUser>({
+    name: 'Anonimo',
+    avatar:
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQT2KlUEHWKd413pq_-JQZilft0PBdE0DBz5A&usqp=CAU',
+  });
   // Carrega as messegens do final
   useEffect(() => {
     const div = messagesRef.current;
@@ -40,6 +50,11 @@ const ChannelMessages: React.FC = () => {
       const response = await api.get('/messages');
       setMessages(response.data);
     }
+
+    const userLogin = localStorage.getItem('@DiscordLeoVargas:user');
+
+    if (userLogin) setUser(JSON.parse(userLogin));
+
     loadMessages();
   }, []);
 
@@ -91,7 +106,7 @@ const ChannelMessages: React.FC = () => {
             </Message>
           ))}
       </Messages>
-      <NewMessage handleAddMessage={handleAddMessage} />
+      <NewMessage handleAddMessage={handleAddMessage} user={user} />
     </Container>
   );
 };

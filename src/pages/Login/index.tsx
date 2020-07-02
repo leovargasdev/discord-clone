@@ -1,12 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, FormEvent } from 'react';
 
 import { Container, Logo, Content, BoxLogin, BoxQRCode } from './styles';
 import DiscordLogo from '../../assets/logo.svg';
 import QRCode from '../../assets/QRCODE.svg';
 
 const Login: React.FC = () => {
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
+  const [name, setName] = useState<string>('');
+  const [avatar, setAvatar] = useState<string>('');
+
+  const handleSubmit = useCallback(
+    (event: FormEvent<HTMLFormElement>): void => {
+      event.preventDefault();
+      localStorage.setItem(
+        '@DiscordLeoVargas:user',
+        JSON.stringify({ avatar, name }),
+      );
+    },
+    [avatar, name],
+  );
 
   return (
     <Container>
@@ -17,15 +28,15 @@ const Login: React.FC = () => {
             <h4>Boas-vindas de volta!</h4>
             <p>Estamos muito animados em te ver novamente!</p>
 
-            <form>
-              <label htmlFor="">E-MAIL</label>
-              <input value={email} onChange={e => setEmail(e.target.value)} />
+            <form onSubmit={handleSubmit}>
+              <label htmlFor="name">Nome</label>
+              <input value={name} onChange={e => setName(e.target.value)} />
 
-              <label htmlFor="">SENHA</label>
+              <label htmlFor="avatar">Avatar URL</label>
               <input
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-                type="password"
+                value={avatar}
+                onChange={e => setAvatar(e.target.value)}
+                type="url"
               />
 
               <a href="/">Esqueceu sua senha?</a>
