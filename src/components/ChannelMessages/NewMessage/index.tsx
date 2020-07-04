@@ -32,7 +32,7 @@ const NewMessage: React.FC<INewMessageProps> = ({ handleAddMessage, user }) => {
       handleAddMessage(message);
       setNewMessage('');
     },
-    [newMessage, handleAddMessage],
+    [newMessage, handleAddMessage, user],
   );
 
   return (
