@@ -8,8 +8,8 @@ import GlobalStyles from './styles/global';
 const App: React.FC = () => (
   <BrowserRouter>
     <Switch>
-      <Route path="/" exact component={Login} />
-      <Route path="/server" exact component={Layout} />
+      <Route path="/" exact component={Layout} />
+      <Route path="/login" exact component={Login} />
     </Switch>
     <GlobalStyles />
   </BrowserRouter>

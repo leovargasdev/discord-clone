@@ -11,7 +11,7 @@ import styled from 'styled-components';
 export const Grind = styled.div`
   display: grid;
 
-  grid-template-columns: 71px 240px auto 240px;
+  grid-template-columns: 72px 240px auto 240px;
   grid-template-rows: 46px auto 52px;
 
   grid-template-areas:

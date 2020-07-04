@@ -10,14 +10,14 @@ export const Container = styled.div`
   max-height: calc(100vh - 46px);
   overflow-y: scroll;
 
-  ::-webkit-scrollbar{
+  ::-webkit-scrollbar {
     width: 4px;
   }
-  ::-webkit-scrollbar-thumb{
+  ::-webkit-scrollbar-thumb {
     background: var(--tertiary);
     border-radius: 4px;
   }
-  ::-webkit-scrollbar-track{
+  ::-webkit-scrollbar-track {
     background: var(--secondary);
   }
 `;
@@ -43,16 +43,17 @@ export const User = styled.div`
   transition: background 0.2s;
 
   &:hover {
-    background: rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.1);
     cursor: pointer;
   }
-  
+
   strong {
     margin-left: 13px;
+    font-size: 18px;
     font-weight: 500;
-    color: #FFF;
+    color: #fff;
     opacity: 0.7;
-    
+
     /* corta o texto e adiciona as reticências quando o texto passou do tamanho máximo do campo*/
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -65,7 +66,7 @@ export const User = styled.div`
     border-radius: 4px;
     padding: 4px 5px;
 
-    color: #FFF;
+    color: #fff;
     font-size: 11px;
     text-transform: uppercase;
     font-weight: bold;
@@ -75,8 +76,8 @@ export const User = styled.div`
 export const Avatar = styled.img`
   flex-shrink: 0;
 
-  width: 32px;
-  height: 32px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   background: var(--primary);
 `;

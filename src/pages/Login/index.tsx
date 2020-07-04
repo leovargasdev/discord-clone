@@ -1,10 +1,12 @@
 import React, { useState, useCallback, FormEvent } from 'react';
-
+import { useHistory } from 'react-router-dom';
 import { Container, Logo, Content, BoxLogin, BoxQRCode } from './styles';
 import DiscordLogo from '../../assets/logo.svg';
 import QRCode from '../../assets/QRCODE.svg';
 
 const Login: React.FC = () => {
+  const history = useHistory();
+
   const [name, setName] = useState<string>('');
   const [avatar, setAvatar] = useState<string>('');
 
@@ -15,6 +17,7 @@ const Login: React.FC = () => {
         '@DiscordLeoVargas:user',
         JSON.stringify({ avatar, name }),
       );
+      history.push('/');
     },
     [avatar, name],
   );
@@ -39,19 +42,21 @@ const Login: React.FC = () => {
                 type="url"
               />
 
-              <a href="/">Esqueceu sua senha?</a>
+              <a href="/">
+                Esqueceu sua senha? Mas isso não precisa de senha :)
+              </a>
 
               <button type="submit">Entrar</button>
             </form>
             <span>
-              Precisando de uma conta? <a href="/">Registrar-se</a>
+              Precisando de uma conta? <a href="/">Registrar-se anonimamente</a>
             </span>
           </BoxLogin>
           <BoxQRCode>
             <img src={QRCode} alt="QR Code gerado" />
-            <p>Entrar com Código QR</p>
+            <p>Não entrar com Código QR</p>
             <span>
-              Escaneie isto com o app móbel do Discord para fazer login
+              Não escaneie isto com nenhum app, pois isto não irá fazer o login
               imediatamente.
             </span>
           </BoxQRCode>

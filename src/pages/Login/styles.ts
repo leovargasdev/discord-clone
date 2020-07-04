@@ -17,6 +17,7 @@ export const Container = styled.div`
 
   > div {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -39,7 +40,7 @@ export const Content = styled.div`
   justify-content: space-between;
 
   padding: 32px;
-  width: 784px;
+  width: 790px;
 
   background: var(--primary);
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
@@ -134,7 +135,7 @@ export const BoxQRCode = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 280px;
+  width: 320px;
   padding-left: 32px;
 
   img {
