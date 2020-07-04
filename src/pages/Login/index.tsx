@@ -19,7 +19,7 @@ const Login: React.FC = () => {
       );
       history.push('/');
     },
-    [avatar, name],
+    [avatar, name, history],
   );
 
   return (
