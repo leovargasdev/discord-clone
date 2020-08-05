@@ -13,12 +13,13 @@
 -  [TypeScript](https://www.typescriptlang.org/)
 -  [React-icons](https://react-icons.netlify.com/)
 -  [Styled-Components](https://styled-components.com/)
+-  [Axios](https://github.com/axios/axios)
 
 ## 💻 Sobre o projeto
 
 Recriar a interface do [Discord](https://discord.com/) como forma de aprendizagem e treinar as skills perante o uso de TypeScript, ReactJS e Flexbox. O desenvolvimento deste projeto só foi capaz graças ao [vídeo](https://www.youtube.com/watch?v=x4FdZd2-_uU) publicado pela Rockeseat(agradeço muito pela qualidade do conteúdo produzido).
 
-Para melhorar a experiência na aplicação, eu criei essa [API](https://github.com/LeeonardoVargas/api-discord-clone) para possibilitar o envio e o armazenamento das as mensagens do chat.
+A aplicação conta com uma tela de login e um controle de sessão através do localStorage do navegador, e para melhorar a experiência no envio das mensagens, eu criei essa [API REST](https://github.com/LeeonardoVargas/api-discord-clone) para controlar o envio das mensagens e salva-lás em um banco de dados.
 
 ## 📥 Instalação e execução
 
