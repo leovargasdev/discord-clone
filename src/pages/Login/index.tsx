@@ -1,5 +1,5 @@
 import React, { useState, useCallback, FormEvent } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 
 import { Container, Logo, Content, BoxLogin, BoxQRCode } from './styles';
 import DiscordLogo from '../../assets/logo.svg';
@@ -43,9 +43,9 @@ const Login: React.FC = () => {
                 type="url"
               />
 
-              <a href="/">
+              <Link to="/">
                 Esqueceu sua senha? Qual senha? Aqui não precisa :)
-              </a>
+              </Link>
 
               <button type="submit">Entrar</button>
             </form>
