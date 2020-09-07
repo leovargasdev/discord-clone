@@ -6,21 +6,22 @@ declare module 'styled-components' {
     title: string;
 
     colors: {
-      // primary: string;
+      primary: string;
       // secondary: string;
       // tertiary: string;
       // quaternary: string;
       // quinary: string;
       // senary: string;
       // white: string;
-      // gray: string;
+      gray: string;
+      grayLight: string;
       // chatInput: string;
       // symbol: string;
       // notification: string;
-      // discord: string;
+      discord: string;
       // mentionDetail: string;
       // mentionMessage: string;
-      // link: string;
+      link: string;
       // rocketseat: string;
     };
   }
