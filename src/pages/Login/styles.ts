@@ -160,3 +160,11 @@ export const BoxQRCode = styled.div`
     text-align: center;
   }
 `;
+
+export const BoxAvatarUser = styled.img`
+  height: auto;
+  width: 320px;
+  padding-left: 32px;
+
+  border-radius: 10px;
+`;

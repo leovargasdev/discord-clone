@@ -1,7 +1,14 @@
 import React, { useState, useCallback, FormEvent } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 
-import { Container, Logo, Content, BoxLogin, BoxQRCode } from './styles';
+import {
+  Container,
+  Logo,
+  Content,
+  BoxLogin,
+  BoxQRCode,
+  BoxAvatarUser,
+} from './styles';
 import DiscordLogo from '../../assets/logo.svg';
 import QRCode from '../../assets/QRCODE.svg';
 
@@ -50,17 +57,25 @@ const Login: React.FC = () => {
               <button type="submit">Entrar</button>
             </form>
             <span>
-              Precisando de uma conta? <a href="/">Registrar-se anonimamente</a>
+              Precisando de uma conta?{' '}
+              <Link to="/">Registrar-se anonimamente</Link>
             </span>
           </BoxLogin>
-          <BoxQRCode>
-            <img src={QRCode} alt="QR Code gerado" />
-            <p>Não entrar com Código QR</p>
-            <span>
-              Não escaneie isto com nenhum app, pois isto não irá fazer o login
-              imediatamente.
-            </span>
-          </BoxQRCode>
+          {avatar ? (
+            <BoxAvatarUser
+              alt="Teste do carregamento da url avatar do usuário"
+              src={avatar}
+            />
+          ) : (
+            <BoxQRCode>
+              <img src={QRCode} alt="QRCode gerado" />
+              <p>Não entrar com Código QR</p>
+              <span>
+                Não escaneie isto com nenhum app, pois isto não irá fazer o
+                login imediatamente.
+              </span>
+            </BoxQRCode>
+          )}
         </Content>
       </div>
     </Container>
