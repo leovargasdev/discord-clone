@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 interface IServerProps {
   isHome?: boolean;
@@ -13,8 +13,8 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
 
-  background: var(--tertiary);
-  padding: 12px 0;
+  background: ${({ theme }) => theme.colors.tertiary};
+  padding-top: 12px;
 
   max-height: 100vh;
   overflow-y: scroll;
@@ -27,8 +27,7 @@ export const Container = styled.div`
 
 export const Separator = styled.div`
   width: 32px;
-  border-bottom: 2px solid var(--quaternary);
-
+  border-bottom: 2px solid ${({ theme }) => theme.colors.quaternary};
   margin-bottom: 8px;
 `;
 
@@ -42,15 +41,19 @@ export const Server = styled.a<IServerProps>`
   height: 48px;
   border-radius: 50%;
   margin-bottom: 8px;
-  background: ${props => (props.isHome ? 'var(--primary)' : 'transparent')};
+  background: ${({ theme, isHome }) =>
+    isHome ? theme.colors.primary : 'transparent'};
 
-  transition-duration: .4s;
+  -webkit-transition: border-radius 0.8s, background 0.8s;
 
   &.active, &:hover, img:hover {
+    transition: border-radius 0.8s, background 0.8s;
+
     border-radius: 20%;
     text-decoration: none;
     cursor: pointer;
-    background: ${props => (props.isHome ? 'var(--discord)' : 'transparent')};
+    background: ${({ theme, isHome }) =>
+      isHome ? theme.colors.discord : 'transparent'};
   }
 
   position: relative;
@@ -59,10 +62,7 @@ export const Server = styled.a<IServerProps>`
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    transition-duration: .4s;
-    &:hover {
-      border-radius: 20%;
-    }
+    -webkit-transition: border-radius 0.8s;
   }
 
   &::before {
@@ -81,7 +81,7 @@ export const Server = styled.a<IServerProps>`
   }
 
   &::after {
-    background: var(--notification);
+    background: ${({ theme }) => theme.colors.notification};
     width: auto;
     height: 16px;
 
@@ -92,7 +92,7 @@ export const Server = styled.a<IServerProps>`
     right: -4px;
 
     border-radius: 50%;
-    border: 2px solid var(--quaternary);
+    border: 2px solid ${({ theme }) => theme.colors.quaternary};
 
     text-align: right;
     font-size: 12px;

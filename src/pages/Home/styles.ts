@@ -29,8 +29,8 @@ export const ServerName = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  padding: 0 11px 0 16px;
-  background: var(--secondary);
+  padding: 0 12px;
+  background: ${({ theme }) => theme.colors.secondary};
   box-shadow: rgba(0, 0, 0, 0.2) 0 1px 0 0;
   z-index: 2;
 

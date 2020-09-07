@@ -7,9 +7,9 @@ declare module 'styled-components' {
 
     colors: {
       primary: string;
-      // secondary: string;
-      // tertiary: string;
-      // quaternary: string;
+      secondary: string;
+      tertiary: string;
+      quaternary: string;
       // quinary: string;
       // senary: string;
       // white: string;
@@ -17,7 +17,7 @@ declare module 'styled-components' {
       grayLight: string;
       // chatInput: string;
       // symbol: string;
-      // notification: string;
+      notification: string;
       discord: string;
       // mentionDetail: string;
       // mentionMessage: string;
