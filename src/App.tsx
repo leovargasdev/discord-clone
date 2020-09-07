@@ -1,16 +1,12 @@
 import React from 'react';
-import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
-import Layout from './components/Layout';
-import Login from './pages/Login';
+import Routes from './routes';
 import GlobalStyles from './styles/global';
 
 const App: React.FC = () => (
   <BrowserRouter>
-    <Switch>
-      <Route path="/" exact component={Layout} />
-      <Route path="/login" exact component={Login} />
-    </Switch>
+    <Routes />
     <GlobalStyles />
   </BrowserRouter>
 );

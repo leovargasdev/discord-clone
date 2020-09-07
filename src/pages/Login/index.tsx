@@ -1,5 +1,6 @@
 import React, { useState, useCallback, FormEvent } from 'react';
 import { useHistory } from 'react-router-dom';
+
 import { Container, Logo, Content, BoxLogin, BoxQRCode } from './styles';
 import DiscordLogo from '../../assets/logo.svg';
 import QRCode from '../../assets/QRCODE.svg';
@@ -43,7 +44,7 @@ const Login: React.FC = () => {
               />
 
               <a href="/">
-                Esqueceu sua senha? Mas isso não precisa de senha :)
+                Esqueceu sua senha? Qual senha? Aqui não precisa :)
               </a>
 
               <button type="submit">Entrar</button>
