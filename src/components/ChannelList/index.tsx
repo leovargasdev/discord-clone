@@ -12,9 +12,11 @@ const ChannelList: React.FC = () => (
     </Category>
 
     <Channel name="chat-geral" />
-    <Channel name="chat-vip" selected />
-    <Channel name="chat-joje" />
-    <Channel name="chat-perdi" />
+    <Channel name="chat-vip" />
+    <Channel name="chat-supimpa" className="active" />
+    <Channel name="chat-o" />
+    <Channel name="chat-do-chat" />
+    <Channel name="chat-hu3" />
   </Container>
 );
 

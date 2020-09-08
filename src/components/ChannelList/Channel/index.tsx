@@ -5,12 +5,12 @@ import { Container, ChannelSettings } from './styles';
 
 interface IChannel {
   name: string;
-  selected?: boolean;
+  className?: string;
 }
 
-const Channel: React.FC<IChannel> = ({ name, selected }) => {
+const Channel: React.FC<IChannel> = ({ name, className }) => {
   return (
-    <Container className={selected ? 'active' : ''}>
+    <Container className={className}>
       <div>
         <FaHashtag />
         <span>{name}</span>

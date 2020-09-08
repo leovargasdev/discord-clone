@@ -10,13 +10,13 @@ declare module 'styled-components' {
       secondary: string;
       tertiary: string;
       quaternary: string;
-      // quinary: string;
-      // senary: string;
-      // white: string;
+      quinary: string;
+      senary: string;
+
       gray: string;
       grayLight: string;
       // chatInput: string;
-      // symbol: string;
+      symbol: string;
       notification: string;
       discord: string;
       // mentionDetail: string;

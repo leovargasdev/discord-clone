@@ -23,7 +23,7 @@ const Login: React.FC = () => {
       event.preventDefault();
       localStorage.setItem(
         '@DiscordLeoVargas:user',
-        JSON.stringify({ avatar, name }),
+        JSON.stringify({ avatar_url: avatar, name }),
       );
       history.push('/');
     },

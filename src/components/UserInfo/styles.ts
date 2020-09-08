@@ -2,26 +2,24 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   grid-area: UI;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px;
-  background: var(--quaternary);
+
+  padding: 0 8px;
+  background: ${({ theme }) => theme.colors.quaternary};
   box-shadow: rgba(0, 0, 0, 0.2) 0 1px 0 0;
 `;
 
-export const Profile = styled.div`
+export const User = styled.div`
   display: flex;
   align-items: center;
 `;
 
-export const Avatar = styled.img`
-  width: 32px;
-  height: 32px;
+export const UserAvatar = styled.img`
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
-
-  background: var(--gray);
 `;
 
 export const UserData = styled.div`
@@ -30,14 +28,14 @@ export const UserData = styled.div`
   flex-direction: column;
 
   strong {
-    display: block;
+    text-transform: capitalize;
     font-size: 13px;
-    color: #fff;
   }
 
   span {
     font-size: 13px;
-    color: var(--gray);
+    margin-top: 2px;
+    color: ${({ theme }) => theme.colors.gray};
   }
 `;
 
@@ -46,14 +44,12 @@ export const Icons = styled.div`
   align-items: center;
 
   svg {
-    width: 20px;
-    height: 20px;
     color: #fff;
     opacity: 0.7;
     transition: opacity 0.2s;
 
     & + svg {
-      margin-left: 8px;
+      margin-left: 4px;
     }
 
     &:hover {

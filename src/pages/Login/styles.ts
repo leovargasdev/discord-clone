@@ -55,7 +55,6 @@ export const BoxLogin = styled.div`
     font-size: 24px;
     line-height: 30px;
     font-weight: 600;
-    color: #fff;
     margin-bottom: 10px;
     text-align: center;
   }
@@ -148,7 +147,6 @@ export const BoxQRCode = styled.div`
     font-size: 24px;
     line-height: 28px;
     font-weight: 600;
-    color: #fff;
     margin-bottom: 12px;
     text-align: center;
   }

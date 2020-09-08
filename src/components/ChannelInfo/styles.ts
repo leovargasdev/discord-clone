@@ -7,7 +7,7 @@ export const Container = styled.div`
   justify-content: space-between;
 
   padding: 0 17px;
-  background: var(--primary);
+  background: ${({ theme }) => theme.colors.primary};
   box-shadow: rgba(0, 0, 0, 0.2) 0 1px 0 0;
   z-index: 2;
 
@@ -18,54 +18,18 @@ export const Container = styled.div`
     svg {
       width: 24px;
       height: 24px;
-      color: var(--symbol);
+      color: ${({ theme }) => theme.colors.symbol};
     }
 
     h3 {
       margin-left: 9px;
       font-size: 16px;
       font-weight: bold;
-      color: #fff;
     }
 
     span {
       font-size: 15px;
-      color: var(--gray);
-    }
-  }
-
-  > button {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    font-size: 20px;
-    color: #fff;
-
-    background: transparent;
-    border: 0;
-    margin-right: 10px;
-    transition-duration: 0.8s;
-    transition-property: color, letter-spacing;
-
-    &:hover {
-      cursor: pointer;
-      color: var(--notification);
-      letter-spacing: 3px;
-      svg {
-        color: var(--notification);
-      }
-    }
-
-    svg {
-      color: #fff;
-      width: 20px;
-      height: 20px;
-      margin-left: 4px;
-      transition: color 0.5s;
-
-      &:hover {
-        color: var(--notification);
-      }
+      color: ${({ theme }) => theme.colors.gray};
     }
   }
 `;
@@ -74,6 +38,31 @@ export const Separator = styled.div`
   height: 24px;
   width: 1px;
   margin: 0 13px;
-  background: #fff;
-  opacity: 0.2;
+  background: ${({ theme }) => theme.colors.grayLight};
+`;
+
+export const ButtonLogout = styled.button`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  font-size: 20px;
+  color: ${({ theme }) => theme.colors.discord};
+  background: transparent;
+  border: 0;
+
+  svg {
+    color: ${({ theme }) => theme.colors.discord};
+    width: 20px;
+    height: 20px;
+    margin-left: 4px;
+  }
+
+  &:hover {
+    cursor: pointer;
+    color: ${({ theme }) => theme.colors.notification};
+    svg {
+      color: ${({ theme }) => theme.colors.notification};
+    }
+  }
 `;

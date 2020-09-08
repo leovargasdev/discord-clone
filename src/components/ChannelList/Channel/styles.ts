@@ -13,29 +13,14 @@ export const Container = styled.div`
   div {
     display: flex;
     align-items: center;
-    /*oculta os icones da direita*/
+    /* Oculta os ícones */
     & + div {
       visibility: hidden;
     }
     span {
       font-size: 15px;
-      color: var(--senary);
+      color: ${({ theme }) => theme.colors.senary};
       margin-left: 5px;
-    }
-  }
-
-  &:hover {
-    cursor: pointer;
-    background: var(--quinary);
-
-    div {
-      span {
-        color: #fff;
-      }
-      & + div {
-        /*mostra os icones de add usuário e ajustes do canal*/
-        visibility: visible;
-      }
     }
   }
 
@@ -43,6 +28,23 @@ export const Container = styled.div`
     width: 24px;
     height: 24px;
     color: var(--symbol);
+  }
+
+  &:hover,
+  &.active {
+    cursor: pointer;
+    background: ${({ theme }) => theme.colors.quinary};
+
+    div {
+      span,
+      svg {
+        color: #fff;
+      }
+      & + div {
+        /* Mostra os icones de add usuário e ajustes do canal */
+        visibility: visible;
+      }
+    }
   }
 `;
 

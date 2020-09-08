@@ -9,11 +9,12 @@ export default createGlobalStyle`
 
   html, body, #root {
     height: 100%;
+    color: #fff;
+
   }
 
   *, button, input {
     font-family: 'Roboto', sans-serif;
-
     border: 0;
     outline: 0;
   }

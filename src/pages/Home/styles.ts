@@ -12,7 +12,7 @@ export const Grind = styled.div`
   display: grid;
 
   grid-template-columns: 72px 240px auto 240px;
-  grid-template-rows: 46px auto 52px;
+  grid-template-rows: 46px auto 50px;
 
   grid-template-areas:
     'SL SN CI CI'
@@ -37,7 +37,6 @@ export const ServerName = styled.div`
   > h3 {
     font-size: 16px;
     font-weight: bold;
-    color: #fff;
   }
 
   > svg {

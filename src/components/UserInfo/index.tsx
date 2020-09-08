@@ -1,27 +1,44 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaHeadphones, FaMicrophone, FaCog } from 'react-icons/fa';
 
-import { Container, Profile, Avatar, UserData, Icons } from './styles';
+import { Container, User, UserAvatar, UserData, Icons } from './styles';
 
-const UserInfo: React.FC = () => (
-  <Container>
-    <Profile>
-      <Avatar
-        src="https://avatars3.githubusercontent.com/u/11177716?s=460&u=c9e54ca2ea76850493ae4b9c34e029ec2e613199&v=4"
-        alt="Leo Vargas"
-      />
-      <UserData>
-        <strong>Leo Vargas</strong>
-        <span>#777</span>
-      </UserData>
-    </Profile>
+interface IUserProps {
+  name: string;
+  avatar_url: string;
+}
 
-    <Icons>
-      <FaHeadphones />
-      <FaMicrophone />
-      <FaCog />
-    </Icons>
-  </Container>
-);
+const UserInfo: React.FC = () => {
+  const [user, setUser] = useState({} as IUserProps);
+
+  useEffect(() => {
+    const userLogin = localStorage.getItem('@DiscordLeoVargas:user');
+
+    if (userLogin) setUser(JSON.parse(userLogin));
+  }, []);
+
+  return (
+    <Container>
+      {user.name && (
+        <User>
+          <UserAvatar
+            src={user.avatar_url}
+            alt={`Avatar do usuário ${user.name}`}
+          />
+          <UserData>
+            <strong>{user.name}</strong>
+            <span>#0800</span>
+          </UserData>
+        </User>
+      )}
+
+      <Icons>
+        <FaHeadphones />
+        <FaMicrophone />
+        <FaCog />
+      </Icons>
+    </Container>
+  );
+};
 
 export default UserInfo;

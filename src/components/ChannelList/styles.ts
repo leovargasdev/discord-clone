@@ -7,8 +7,8 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: stretch;
 
-  padding: 24px 10px 0 16px;
-  background: var(--secondary);
+  padding: 24px 16px;
+  background: ${({ theme }) => theme.colors.secondary};
 `;
 
 export const Category = styled.div`
@@ -21,13 +21,13 @@ export const Category = styled.div`
     text-transform: uppercase;
     font-size: 12px;
     font-weight: 500;
-    color: var(--gray);
+    color: ${({ theme }) => theme.colors.gray};
   }
 
   svg {
     width: 21px;
     height: 21px;
-    color: var(--symbol);
+    color: ${({ theme }) => theme.colors.symbol};
     cursor: pointer;
   }
 `;
