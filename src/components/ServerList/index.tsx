@@ -12,8 +12,9 @@ const ServerList: React.FC = () => (
 
     <Separator />
 
-    {servers.map(server => (
+    {servers.map((server, index) => (
       <Server
+        key={index.toString()}
         href={server.link}
         target="_new"
         hasNotifications={server.notification}

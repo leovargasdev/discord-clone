@@ -3,8 +3,8 @@ import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
 import Routes from './routes';
-import GlobalStyles from './styles/global';
 import defaultTheme from './styles/theme';
+import GlobalStyles from './styles/global';
 
 const App: React.FC = () => (
   <BrowserRouter>

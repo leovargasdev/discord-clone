@@ -1,5 +1,6 @@
-import React, { useState, useCallback, FormEvent } from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import React, { useState, useCallback } from 'react';
+import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import {
   Container,
@@ -14,21 +15,18 @@ import QRCode from '../../assets/QRCODE.svg';
 
 const Login: React.FC = () => {
   const history = useHistory();
-
   const [name, setName] = useState<string>('');
   const [avatar, setAvatar] = useState<string>('');
 
-  const handleSubmit = useCallback(
-    (event: FormEvent<HTMLFormElement>): void => {
-      event.preventDefault();
+  const handleLogin = useCallback((): void => {
+    if (avatar && name) {
       localStorage.setItem(
         '@DiscordLeoVargas:user',
         JSON.stringify({ avatar_url: avatar, name }),
       );
       history.push('/');
-    },
-    [avatar, name, history],
-  );
+    }
+  }, [history, avatar, name]);
 
   return (
     <Container>
@@ -39,7 +37,7 @@ const Login: React.FC = () => {
             <h4>Boas-vindas de volta!</h4>
             <p>Estamos muito animados em te ver novamente!</p>
 
-            <form onSubmit={handleSubmit}>
+            <form>
               <label htmlFor="name">Nome</label>
               <input value={name} onChange={e => setName(e.target.value)} />
 
@@ -54,7 +52,9 @@ const Login: React.FC = () => {
                 Esqueceu sua senha? Qual senha? Aqui não precisa :)
               </Link>
 
-              <button type="submit">Entrar</button>
+              <button type="button" onClick={handleLogin}>
+                Entrar
+              </button>
             </form>
             <span>
               Precisando de uma conta?{' '}
