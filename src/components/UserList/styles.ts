@@ -5,20 +5,20 @@ export const Container = styled.div`
 
   display: flex;
   flex-direction: column;
-  padding: 3px 6px 0 16px;
-  background: var(--secondary);
-  max-height: calc(100vh - 46px);
+  padding: 3px 6px;
+  background: ${({ theme }) => theme.colors.secondary};
+
   overflow-y: scroll;
 
   ::-webkit-scrollbar {
     width: 4px;
   }
   ::-webkit-scrollbar-thumb {
-    background: var(--tertiary);
+    background: ${({ theme }) => theme.colors.tertiary};
     border-radius: 4px;
   }
   ::-webkit-scrollbar-track {
-    background: var(--secondary);
+    background: ${({ theme }) => theme.colors.secondary};
   }
 `;
 
@@ -28,19 +28,18 @@ export const Role = styled.span`
   text-transform: uppercase;
   font-size: 12px;
   font-weight: 500;
-  color: var(--gray);
+  color: ${({ theme }) => theme.colors.gray};
 `;
 
 export const User = styled.div`
-  margin-top: 5px;
-  padding: 5px;
-
   display: flex;
   align-items: center;
 
+  margin-top: 5px;
+  padding: 5px;
   background: transparent;
   border-radius: 4px;
-  transition: background 0.2s;
+  transition: background 0.6s;
 
   &:hover {
     background: rgba(255, 255, 255, 0.1);
@@ -51,7 +50,6 @@ export const User = styled.div`
     margin-left: 13px;
     font-size: 18px;
     font-weight: 500;
-    color: #fff;
     opacity: 0.7;
 
     /* corta o texto e adiciona as reticências quando o texto passou do tamanho máximo do campo*/
@@ -59,25 +57,20 @@ export const User = styled.div`
     text-overflow: ellipsis;
     overflow: hidden;
   }
-  /* tag do bot */
+  /* TAG BOT*/
   span {
     margin-left: 9px;
-    background: var(--discord);
+    background: ${({ theme }) => theme.colors.discord};
     border-radius: 4px;
     padding: 4px 5px;
 
-    color: #fff;
     font-size: 11px;
-    text-transform: uppercase;
     font-weight: bold;
   }
 `;
 
 export const Avatar = styled.img`
-  flex-shrink: 0;
-
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  background: var(--primary);
 `;

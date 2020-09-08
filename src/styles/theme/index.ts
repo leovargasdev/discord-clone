@@ -13,12 +13,12 @@ const defaultTheme: DefaultTheme = {
 
     gray: '#8a8c90',
     grayLight: '#b9bbbe',
-    // chatInput: '#40444b',
+    chatInput: '#40444b',
     symbol: '#74777a',
     notification: '#f84a4b',
     discord: '#6e86d6',
-    // mentionDetail: '#f9a839',
-    // mentionMessage: '#413f3f',
+    mentionDetail: '#f9a839',
+    mentionMessage: '#413f3f',
     link: '#5d80d6',
   },
 };

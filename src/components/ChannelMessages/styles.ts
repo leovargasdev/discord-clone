@@ -10,13 +10,13 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: var(--primary);
+  background: ${({ theme }) => theme.colors.primary};
 `;
 
 export const Messages = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 20px 0;
+  padding: 10px 0;
 
   max-height: calc(100vh - (46px + 68px));
   overflow-y: scroll;
@@ -25,14 +25,14 @@ export const Messages = styled.div`
     width: 4px;
   }
   ::-webkit-scrollbar-thumb {
-    background: var(--tertiary);
+    background: ${({ theme }) => theme.colors.tertiary};
     border-radius: 4px;
   }
   ::-webkit-scrollbar-track {
-    background: var(--secondary);
+    background: ${({ theme }) => theme.colors.secondary};
   }
 
-  scrollbar-color: var(--secondary);
+  scrollbar-color: ${({ theme }) => theme.colors.secondary};
 `;
 
 export const Message = styled.div<IMessageProps>`
@@ -45,8 +45,8 @@ export const Message = styled.div<IMessageProps>`
   ${props =>
     props.hasMention &&
     css`
-      background: var(--mention-message);
-      border-left: 2px solid var(--mention-detail);
+      background: ${({ theme }) => theme.colors.mentionMessage};
+      border-left: 2px solid ${({ theme }) => theme.colors.mentionDetail};
       padding-left: 14px;
     `}
 
@@ -67,14 +67,14 @@ export const ContentMessage = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding-left: 5px;
+  margin-left: 10px;
+
   p {
     text-align: left;
     font-size: 16px;
-    color: #fff;
 
     span {
-      color: var(--link);
+      color: ${({ theme }) => theme.colors.link};
       &:hover {
         cursor: pointer;
         text-decoration: underline;
@@ -88,13 +88,12 @@ export const HeaderMessage = styled.div`
   align-items: center;
 
   strong {
-    color: #fff;
     font-size: 16px;
   }
 
   span {
     margin-left: 6px;
-    color: var(--gray);
+    color: ${({ theme }) => theme.colors.gray};
     font-size: 13px;
   }
 `;

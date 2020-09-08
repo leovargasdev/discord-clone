@@ -15,14 +15,13 @@ declare module 'styled-components' {
 
       gray: string;
       grayLight: string;
-      // chatInput: string;
+      chatInput: string;
       symbol: string;
       notification: string;
       discord: string;
-      // mentionDetail: string;
-      // mentionMessage: string;
+      mentionDetail: string;
+      mentionMessage: string;
       link: string;
-      // rocketseat: string;
     };
   }
 }

@@ -4,7 +4,7 @@ export const InputWrapper = styled.div`
   display: flex;
   align-items: center;
   margin: 0 16px 10px;
-  background: var(--chat-input);
+  background: ${({ theme }) => theme.colors.chatInput};
   border-radius: 7px;
   padding: 2px 0;
 
@@ -16,14 +16,14 @@ export const InputWrapper = styled.div`
     color: #fff;
 
     &::placeholder {
-      color: var(--gray);
+      color: ${({ theme }) => theme.colors.gray};
     }
   }
   svg {
     margin: 0 14px;
     height: 25px;
     width: 25px;
-    color: var(--gray);
+    color: ${({ theme }) => theme.colors.gray};
 
     &:hover {
       color: #fff;

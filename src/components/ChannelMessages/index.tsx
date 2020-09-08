@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  useMemo,
+} from 'react';
 
 import {
   Container,
@@ -7,7 +13,7 @@ import {
   ContentMessage,
   HeaderMessage,
 } from './styles';
-
+import MeAvatar from '../../assets/avatars/eu.jpeg';
 import NewMessage from './NewMessage';
 import api from '../../services/api';
 
@@ -20,25 +26,21 @@ interface IMessage {
   hasMention?: boolean;
 }
 
-interface ICreateMessageData {
-  content: string;
-  username: string;
-  avatar_url: string;
-}
-
-interface IUser {
+interface IUserProps {
   name: string;
-  avatar: string;
+  avatar_url: string;
 }
 
 const ChannelMessages: React.FC = () => {
   const messagesRef = useRef() as React.MutableRefObject<HTMLDivElement>;
   const [messages, setMessages] = useState<IMessage[]>([]);
-  const [user, setUser] = useState<IUser>({
-    name: 'Anonimo',
-    avatar:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQT2KlUEHWKd413pq_-JQZilft0PBdE0DBz5A&usqp=CAU',
-  });
+  // Carregando usuário
+  const user = useMemo<IUserProps>(() => {
+    const userLogin = localStorage.getItem('@DiscordLeoVargas:user');
+    if (userLogin) return { ...JSON.parse(userLogin) };
+
+    return {} as IUserProps;
+  }, []);
   // Carrega as messegens do final
   useEffect(() => {
     const div = messagesRef.current;
@@ -46,67 +48,57 @@ const ChannelMessages: React.FC = () => {
   }, [messagesRef, messages]);
 
   useEffect(() => {
-    async function loadMessages(): Promise<void> {
-      const response = await api.get('/messages');
-      setMessages(response.data);
-    }
-
-    const userLogin = localStorage.getItem('@DiscordLeoVargas:user');
-
-    if (userLogin) setUser(JSON.parse(userLogin));
-
-    loadMessages();
+    api.get('/messages').then(response => setMessages(response.data));
   }, []);
 
-  const handleAddMessage = useCallback(
-    async (newMessage: ICreateMessageData): Promise<void> => {
+  const handleNewMessage = useCallback(
+    async (message: string): Promise<void> => {
       try {
-        const response = await api.post('/new-message', newMessage);
+        const response = await api.post('/new-message', {
+          content: message,
+          username: user.name,
+          avatar_url: user.avatar_url,
+        });
         setMessages([...messages, response.data]);
       } catch (err) {
         console.log(err);
       }
     },
-    [messages],
+    [user, messages],
   );
 
   return (
     <Container>
       <Messages ref={messagesRef}>
+        {/* Mensagem teste */}
         <Message hasMention>
-          <img
-            alt="Mestre Leo Vargas"
-            src="https://avatars3.githubusercontent.com/u/11177716?s=460&u=c9e54ca2ea76850493ae4b9c34e029ec2e613199&v=4"
-          />
+          <img alt="Mestre Leo Vargas" src={MeAvatar} />
           <ContentMessage>
             <HeaderMessage>
               <strong>Leo</strong>
               <span>Inicio dos tempo</span>
             </HeaderMessage>
             <p>
-              Teste de Menções: As pessoas de sexo <span>@masculino</span> no
-              inglês mens são!
+              Menção: Pessoas de sexo <span>@masculino</span> no inglês mens
+              são!
             </p>
           </ContentMessage>
         </Message>
-        {messages &&
-          messages.map(message => (
-            <Message key={message.id} hasMention={!!message.hasMention}>
-              <img
-                alt={message.username}
-                src={`${message.avatar_url}${message.id}`}
-              />
-              <ContentMessage>
-                <HeaderMessage>
-                  <strong>{message.username}</strong>
-                  <span>{message.date}</span>
-                </HeaderMessage>
-                <p>{message.content}</p>
-              </ContentMessage>
-            </Message>
-          ))}
+
+        {messages.map(message => (
+          <Message key={message.id} hasMention={!!message.hasMention}>
+            <img alt={message.username} src={message.avatar_url} />
+            <ContentMessage>
+              <HeaderMessage>
+                <strong>{message.username}</strong>
+                <span>{message.date}</span>
+              </HeaderMessage>
+              <p>{message.content}</p>
+            </ContentMessage>
+          </Message>
+        ))}
       </Messages>
-      <NewMessage handleAddMessage={handleAddMessage} user={user} />
+      <NewMessage handleNewMessage={handleNewMessage} />
     </Container>
   );
 };

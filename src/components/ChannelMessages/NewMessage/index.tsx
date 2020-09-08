@@ -3,15 +3,8 @@ import { MdAddCircle } from 'react-icons/md';
 
 import { InputWrapper } from './styles';
 
-interface ICreateMessageData {
-  content: string;
-  username: string;
-  avatar_url: string;
-}
-
 interface INewMessageProps {
-  handleAddMessage: (message: ICreateMessageData) => void;
-  user: IUser;
+  handleNewMessage: (message: string) => void;
 }
 
 interface IUser {
@@ -19,20 +12,15 @@ interface IUser {
   avatar: string;
 }
 
-const NewMessage: React.FC<INewMessageProps> = ({ handleAddMessage, user }) => {
-  const [newMessage, setNewMessage] = useState('');
+const NewMessage: React.FC<INewMessageProps> = ({ handleNewMessage }) => {
+  const [textMessage, setTextMessage] = useState('');
   const handleSubmit = useCallback(
     (event: FormEvent<HTMLFormElement>): void => {
       event.preventDefault();
-      const message = {
-        content: newMessage,
-        username: user.name,
-        avatar_url: user.avatar,
-      };
-      handleAddMessage(message);
-      setNewMessage('');
+      handleNewMessage(textMessage);
+      setTextMessage('');
     },
-    [newMessage, handleAddMessage, user],
+    [textMessage, handleNewMessage],
   );
 
   return (
@@ -40,8 +28,8 @@ const NewMessage: React.FC<INewMessageProps> = ({ handleAddMessage, user }) => {
       <InputWrapper>
         <MdAddCircle size={20} />
         <input
-          value={newMessage}
-          onChange={e => setNewMessage(e.target.value)}
+          value={textMessage}
+          onChange={e => setTextMessage(e.target.value)}
           placeholder="Deixe sua mensagem aqui"
         />
       </InputWrapper>
