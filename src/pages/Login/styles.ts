@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { shade } from 'polished';
+import { shade, lighten } from 'polished';
 import BackgroundImage from '../../assets/background.jpg';
 
 export const Container = styled.div`
@@ -95,6 +95,10 @@ export const BoxLogin = styled.div`
       margin-top: 8px;
       color: ${({ theme }) => theme.colors.discord};
       text-decoration: none;
+
+      &:hover {
+        color: ${({ theme }) => lighten(0.05, theme.colors.discord)};
+      }
     }
 
     button {
@@ -125,6 +129,10 @@ export const BoxLogin = styled.div`
     a {
       text-decoration: none;
       color: ${({ theme }) => theme.colors.discord};
+
+      &:hover {
+        color: ${({ theme }) => lighten(0.05, theme.colors.discord)};
+      }
     }
   }
 `;

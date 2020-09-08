@@ -58,7 +58,7 @@ const Login: React.FC = () => {
             </form>
             <span>
               Precisando de uma conta?{' '}
-              <Link to="/">Registrar-se anonimamente</Link>
+              <Link to="/">Registrar-se anonimamente.</Link>
             </span>
           </BoxLogin>
           {avatar ? (
