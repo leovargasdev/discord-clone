@@ -97,3 +97,16 @@ export const HeaderMessage = styled.div`
     font-size: 13px;
   }
 `;
+
+export const LoadingMessages = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  h3 {
+    color: ${({ theme }) => theme.colors.discord};
+    text-transform: uppercase;
+    margin-top: 20px;
+  }
+`;

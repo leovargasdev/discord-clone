@@ -5,13 +5,16 @@ import React, {
   useCallback,
   useMemo,
 } from 'react';
+import ReactLoading from 'react-loading';
 
+import { useTheme } from 'styled-components';
 import {
   Container,
   Messages,
   Message,
   ContentMessage,
   HeaderMessage,
+  LoadingMessages,
 } from './styles';
 import MeAvatar from '../../assets/avatars/eu.jpeg';
 import NewMessage from './NewMessage';
@@ -32,8 +35,10 @@ interface IUserProps {
 }
 
 const ChannelMessages: React.FC = () => {
+  const { colors } = useTheme();
   const messagesRef = useRef() as React.MutableRefObject<HTMLDivElement>;
   const [messages, setMessages] = useState<IMessage[]>([]);
+  const [loading, setLoading] = useState(true);
   // Carregando usuário
   const user = useMemo<IUserProps>(() => {
     const userLogin = localStorage.getItem('@DiscordLeoVargas:user');
@@ -49,6 +54,7 @@ const ChannelMessages: React.FC = () => {
 
   useEffect(() => {
     api.get('/messages').then(response => setMessages(response.data));
+    setLoading(false);
   }, []);
 
   const handleNewMessage = useCallback(
@@ -69,35 +75,46 @@ const ChannelMessages: React.FC = () => {
 
   return (
     <Container>
-      <Messages ref={messagesRef}>
-        {/* Mensagem teste */}
-        <Message hasMention>
-          <img alt="Mestre Leo Vargas" src={MeAvatar} />
-          <ContentMessage>
-            <HeaderMessage>
-              <strong>Leo</strong>
-              <span>Inicio dos tempo</span>
-            </HeaderMessage>
-            <p>
-              Menção: Pessoas de sexo <span>@masculino</span> no inglês mens
-              são!
-            </p>
-          </ContentMessage>
-        </Message>
-
-        {messages.map(message => (
-          <Message key={message.id} hasMention={!!message.hasMention}>
-            <img alt={message.username} src={message.avatar_url} />
+      {loading ? (
+        <LoadingMessages>
+          <ReactLoading
+            type="spinningBubbles"
+            color={colors.discord}
+            height={100}
+            width={100}
+          />
+          <h3>Carregando as mensagens</h3>
+        </LoadingMessages>
+      ) : (
+        <Messages ref={messagesRef}>
+          <Message hasMention>
+            <img alt="Mestre Leo Vargas" src={MeAvatar} />
             <ContentMessage>
               <HeaderMessage>
-                <strong>{message.username}</strong>
-                <span>{message.date}</span>
+                <strong>Leo</strong>
+                <span>Inicio dos tempo</span>
               </HeaderMessage>
-              <p>{message.content}</p>
+              <p>
+                Menção: Pessoas de sexo <span>@masculino</span> no inglês mens
+                são!
+              </p>
             </ContentMessage>
           </Message>
-        ))}
-      </Messages>
+
+          {messages.map(message => (
+            <Message key={message.id} hasMention={!!message.hasMention}>
+              <img alt={message.username} src={message.avatar_url} />
+              <ContentMessage>
+                <HeaderMessage>
+                  <strong>{message.username}</strong>
+                  <span>{message.date}</span>
+                </HeaderMessage>
+                <p>{message.content}</p>
+              </ContentMessage>
+            </Message>
+          ))}
+        </Messages>
+      )}
       <NewMessage handleNewMessage={handleNewMessage} />
     </Container>
   );
