@@ -19,13 +19,16 @@ const Login: React.FC = () => {
   const [avatar, setAvatar] = useState<string>('');
 
   const handleLogin = useCallback((): void => {
-    if (avatar && name) {
-      localStorage.setItem(
-        '@DiscordLeoVargas:user',
-        JSON.stringify({ avatar_url: avatar, name }),
-      );
-      history.push('/');
-    }
+    const user =
+      avatar && name
+        ? { avatar_url: avatar, name }
+        : {
+            name: 'Anônimo',
+            avatar_url:
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQT2KlUEHWKd413pq_-JQZilft0PBdE0DBz5A&usqp=CAU',
+          };
+    localStorage.setItem('@DiscordLeoVargas:user', JSON.stringify(user));
+    history.push('/');
   }, [history, avatar, name]);
 
   return (
