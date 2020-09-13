@@ -27,7 +27,7 @@ export const Container = styled.div`
   svg {
     width: 24px;
     height: 24px;
-    color: var(--symbol);
+    color: ${({ theme }) => theme.colors.symbol};
   }
 
   &:hover,
@@ -52,7 +52,7 @@ export const ChannelSettings = styled.div`
   svg {
     width: 16px;
     height: 16px;
-    color: var(--symbol);
+    color: ${({ theme }) => theme.colors.symbol};
 
     transition: color 0.2s;
 

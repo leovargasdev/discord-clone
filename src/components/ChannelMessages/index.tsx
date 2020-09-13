@@ -53,8 +53,10 @@ const ChannelMessages: React.FC = () => {
   }, [messagesRef, messages]);
 
   useEffect(() => {
-    api.get('/messages').then(response => setMessages(response.data));
-    setLoading(false);
+    api.get('/messages').then(response => {
+      setMessages(response.data);
+      setLoading(false);
+    });
   }, []);
 
   const handleNewMessage = useCallback(
